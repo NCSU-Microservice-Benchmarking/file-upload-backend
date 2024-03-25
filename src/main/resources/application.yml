@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: root
+    password: Wpx990116
+    # url: jdbc:mysql:///filesever?useUnicode=true&characterEncoding=utf-8&serverTimeZone=UTC&useSSL=false  # 本地数据库
+    url: jdbc:mysql://host.docker.internal:3306/filesever?useUnicode=true&characterEncoding=utf-8&serverTimeZone=UTC&useSSL=false # docker数据库
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10000MB
+      max-request-size: 100000MB
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.yulab.fileuploadapplication.model
+upload:
+  path: /upload/ #文件上传路径

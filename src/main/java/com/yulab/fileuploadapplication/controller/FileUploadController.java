@@ -1,0 +1,30 @@
+package com.yulab.fileuploadapplication.controller;
+
+
+import com.yulab.fileuploadapplication.service.FileService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
+/**
+ * file upload
+ */
+@RestController
+@RequestMapping("/File")
+@CrossOrigin
+public class FileUploadController {
+    @Autowired
+    private FileService fileService;
+
+    @PostMapping("/")
+    public void upload(String name,
+                       String md5,
+                       MultipartFile file) throws IOException {
+        fileService.upload(name, md5,file);
+    }
+}
